@@ -10,9 +10,9 @@ namespace DignitaTask.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (HttpContext.Current.Session["trabajador"] == null)
+            if (HttpContext.Current.Session["session"] == null)
             {
-                filterContext.Result = new RedirectResult("~/Default/Login");
+                filterContext.Result = new RedirectResult("~/Login/Login");
             }
             base.OnActionExecuting(filterContext);
         }

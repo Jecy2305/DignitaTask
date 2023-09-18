@@ -1,0 +1,276 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas | Tablero</title>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/745852fa0a.js" crossorigin="anonymous"></script>
+
+    <!-- Icono Navegador -->
+    <link rel="icon" href="https://dignita.tech/wp-content/uploads/2022/05/cropped-digniya-ico-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://dignita.tech/wp-content/uploads/2022/05/cropped-digniya-ico-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://dignita.tech/wp-content/uploads/2022/05/cropped-digniya-ico-180x180.png" />
+
+    <!-- Estilos CSS-->
+    <link rel="stylesheet" href="~/Content/normalize.css">
+    <link rel="stylesheet" href="~/Content/estilos.css">
+
+    <!-- Codigo JS -->
+    <script src="~/Scripts/codigo.js" defer></script>
+</head>
+<body>
+
+    <div class="body">
+        <section class="barraLateral">
+            <div class="barraLateral__fila">
+                <ul class="menu">
+
+                    <li class="menu__elemento menu__elemento-activo">
+                        <div class="menu__linea"></div>
+                        <div class="menu__contenedor">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>Tareas</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="secciones">
+                <a href="../mensajes/no-leidos.html" class="secciones__elemento">
+                    <i class="fa-solid fa-bell secciones__icono"></i>
+                    <span>Mensajes</span>
+                </a>
+
+                <div class="secciones__elemento secciones__elemento-activo">
+                    <i class="fa-solid fa-globe secciones__icono"></i>
+                    <span>Tablero</span>
+                </div>
+
+                <a href="../cuenta/perfil.html" class="secciones__elemento">
+                    <i class="fa-solid fa-user secciones__icono"></i>
+                    <span>Cuenta</span>
+                </a>
+
+            </div>
+
+            <button class="btnAbrirMenu"><i class="fa-solid fa-chevron-right btnAbrirMenu__icono"></i></button>
+        </section>
+
+        <section class="main">
+            <h1 class="main__h1">TAREAS</h1>
+
+            <div class="main__superior">
+                <div class="buscar">
+                    <input type="text" placeholder="Escribe para filtrar" class="buscar__input">
+                    <button class="buscar__boton">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Buscar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="tabla">
+                <div class="tabla__header tabla__header-tareas">
+                    <div>Nombre</div>
+                    <div class="tabla__extra">Entrega</div>
+                    <div class="tabla__extra">Estado</div>
+                    <div></div>
+                </div>
+
+                <div class="tabla__contenido">
+                    <div class="tabla__fila tabla__fila-tareas">
+                        <span>Realizar el html y css</span>
+                        <span class="tabla__extra">25/08/2023 <i class="fa-solid fa-triangle-exclamation tabla__exclamacion"></i></span>
+                        <span class="tabla__extra">En proceso</span>
+                        <div class="botones">
+                            <div class="botones__boton botones__boton-redondo botones__boton-amarillo" onclick="abrirVentanaEditar()">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+
+                            <div class="botones__boton botones__boton-redondo botones__boton-verde">
+                                <i class="fa-solid fa-check botones__icono"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tabla__fila tabla__fila-tareas">
+                        <span>Adaptarlo a dispositivos móviles (responsive)</span>
+                        <span class="tabla__extra">26/08/2023</span>
+                        <span class="tabla__extra">En proceso</span>
+                        <div class="botones">
+                            <div class="botones__boton botones__boton-redondo botones__boton-amarillo" onclick="abrirVentanaEditar()">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+
+                            <div class="botones__boton botones__boton-redondo botones__boton-verde">
+                                <i class="fa-solid fa-check botones__icono"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tabla__fila tabla__fila-tareas">
+                        <span>Añadir al diseño un botón de suscribirse</span>
+                        <span class="tabla__extra">30/08/2023</span>
+                        <span class="tabla__extra">Por hacer</span>
+                        <div class="botones">
+                            <div class="botones__boton botones__boton-redondo botones__boton-amarillo" onclick="abrirVentanaEditar()">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+
+                            <div class="botones__boton botones__boton-redondo botones__boton-verde">
+                                <i class="fa-solid fa-check botones__icono"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tabla__fila tabla__fila-tareas">
+                        <span>Realizar el carrusel de los elementos</span>
+                        <span class="tabla__extra">01/09/2023</span>
+                        <span class="tabla__extra">En revisión</span>
+                        <div class="botones">
+                            <div class="botones__boton botones__boton-redondo botones__boton-amarillo" onclick="abrirVentanaEditar()">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+
+                            <div class="botones__boton botones__boton-redondo botones__boton-verde">
+                                <i class="fa-solid fa-check botones__icono"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tabla__fila tabla__fila-tareas">
+                        <span>Diseño UI/UX en figma</span>
+                        <span class="tabla__extra">15/08/2023</span>
+                        <span class="tabla__extra">Terminado</span>
+                        <div class="botones">
+                            <div class="botones__boton botones__boton-redondo botones__boton-amarillo" onclick="abrirVentanaEditar()">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+
+                            <div class="botones__boton botones__boton-redondo botones__boton-verde">
+                                <i class="fa-solid fa-check botones__icono"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="mensaje mensaje-editar">
+        <div class="mensaje__contenedor">
+            <h3 class="mensaje__titulo">EDITAR TAREA</h3>
+
+            <div class="mensaje__contenido">
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Proyecto: </label>
+                    <input class="mensaje__input mensaje__input-disabled" type="text" disabled>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Requerimiento: </label>
+                    <input class="mensaje__input mensaje__input-disabled" type="text" disabled>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Nombre: </label>
+                    <input class="mensaje__input mensaje__input-disabled" type="text" disabled>
+                </div>
+
+                <div class="mensaje__campo mensaje__campo-start">
+                    <label for="" class="mensaje__texto">Descripción: </label>
+                    <textarea name="" id="" cols="30" rows="3" class="mensaje__input mensaje__textarea mensaje__input-disabled" disabled></textarea>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Etapa: </label>
+                    <div class="mensaje__combobox">
+                        <div class="mensaje__input mensaje__combobox-contenedor mensaje__combobox-disabled">
+                            <input type="text" class="mensaje__combobox-input" value="Diseño" readonly>
+                            <i class="fa-solid fa-chevron-down mensaje__combobox-flecha"></i>
+                        </div>
+                        <div class="mensaje__combobox-opciones">
+                            <div class="mensaje__combobox-opcion">Planificación</div>
+                            <div class="mensaje__combobox-opcion">Diseño</div>
+                            <div class="mensaje__combobox-opcion">Implemetación</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mensaje__campo mensaje__campo-start">
+                    <label for="" class="mensaje__texto">Equipo: </label>
+                    <div class="mensaje__combobox">
+                        <div class="mensaje__input mensaje__combobox-contenedor mensaje__combobox-disabled">
+                            <input type="text" class="mensaje__combobox-input" value="Equipo A" readonly>
+                            <i class="fa-solid fa-chevron-down mensaje__combobox-flecha"></i>
+                        </div>
+                        <div class="mensaje__combobox-opciones">
+                            <div class="mensaje__combobox-opcion">Equipo A</div>
+                            <div class="mensaje__combobox-opcion">Equipo B</div>
+                            <div class="mensaje__combobox-opcion">Equipo C</div>
+                            <div class="mensaje__combobox-opcion">Equipo D</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Estado: </label>
+                    <div class="mensaje__combobox">
+                        <div class="mensaje__input mensaje__combobox-contenedor">
+                            <input type="text" class="mensaje__combobox-input" value="En proceso" readonly>
+                            <i class="fa-solid fa-chevron-down mensaje__combobox-flecha"></i>
+                        </div>
+                        <div class="mensaje__combobox-opciones">
+                            <div class="mensaje__combobox-opcion">Por hacer</div>
+                            <div class="mensaje__combobox-opcion">En proceso</div>
+                            <div class="mensaje__combobox-opcion">En revisión</div>
+                            <div class="mensaje__combobox-opcion">Terminado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Fecha inicio:</label>
+                    <input type="date" name="" id="" class="mensaje__input mensaje__input-disabled" disabled>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Fecha limite:</label>
+                    <input type="date" name="" id="" class="mensaje__input mensaje__input-disabled" disabled>
+                </div>
+
+                <div class="mensaje__campo mensaje__campo-start">
+                    <label for="" class="mensaje__texto">Revisión: </label>
+                    <textarea name="" id="" cols="30" rows="3" class="mensaje__input mensaje__textarea mensaje__input-disabled" disabled></textarea>
+                </div>
+            </div>
+
+            <div class="mensaje__opciones">
+                <div class="mensaje__boton mensaje__cerrar">
+                    <i class="fa-solid fa-x"></i>
+                    <span>Cancelar</span>
+                </div>
+
+                <div class="mensaje__boton mensaje__aceptar">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <span>Guardar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

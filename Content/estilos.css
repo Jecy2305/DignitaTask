@@ -882,19 +882,19 @@ a {
         background-color: var(--anaranjado);
     }
 
-.desarrolladores {
+.multicampos {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.desarrolladores__desarrollador {
+.multicampos__campo {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 15px;
 }
 
-.desarrolladores__icono {
+.multicampos__icono {
     background-color: var(--gris);
     width: 35px;
     height: 35px;
@@ -906,7 +906,7 @@ a {
     transition: 0.15s;
 }
 
-    .desarrolladores__icono:hover {
+    .multicampos__icono:hover {
         background-color: var(--anaranjado);
     }
 

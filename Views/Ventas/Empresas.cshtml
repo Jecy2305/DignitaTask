@@ -1,0 +1,356 @@
+﻿@using DignitaTask.Controllers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratos | Tablero</title>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/745852fa0a.js" crossorigin="anonymous"></script>
+
+    <!-- Icono Navegador -->
+    <link rel="icon" href="https://dignita.tech/wp-content/uploads/2022/05/cropped-digniya-ico-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://dignita.tech/wp-content/uploads/2022/05/cropped-digniya-ico-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://dignita.tech/wp-content/uploads/2022/05/cropped-digniya-ico-180x180.png" />
+
+    <!-- Estilos CSS-->
+    <link rel="stylesheet" href="~/Content/normalize.css">
+    <link rel="stylesheet" href="~/Content/estilos.css">
+
+    <!-- Codigo JS -->
+    <script src="~/Scripts/codigo.js" defer></script>
+</head>
+<body>
+
+    <div class="body">
+        <section class="barraLateral">
+            <div class="barraLateral__fila">
+                <ul class="menu">
+                    <a href="@Url.Action("Contratos","Ventas")" class="menu__elemento">
+                        <div class="menu__linea"></div>
+                        <div class="menu__contenedor">
+                            <i class="fa-solid fa-folder"></i>
+                            <span>Contratos</span>
+                        </div>
+                    </a>
+
+                    <div class="menu__elemento menu__elemento-activo">
+                        <div class="menu__linea"></div>
+                        <div class="menu__contenedor">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>Empresas</span>
+                        </div>
+                    </div>
+
+                    @*<a href="equipos.html" class="menu__elemento">
+                        <div class="menu__linea"></div>
+                        <div class="menu__contenedor">
+                            <i class="fa-solid fa-file"></i>
+                            <span>Equipos</span>
+                        </div>
+                    </a>
+
+                    <a href="trabajadores.html" class="menu__elemento">
+                        <div class="menu__linea"></div>
+                        <div class="menu__contenedor">
+                            <i class="fa-solid fa-clone"></i>
+                            <span>Trabajadores</span>
+                        </div>
+                    </a>
+
+                    <a href="reportes.html" class="menu__elemento">
+                        <div class="menu__linea"></div>
+                        <div class="menu__contenedor">
+                            <i class="fa-solid fa-clone"></i>
+                            <span>Reportes</span>
+                        </div>
+                    </a>*@
+
+                </ul>
+            </div>
+
+            <div class="secciones">
+                <a href="../mensajes/no-leidos.html" class="secciones__elemento">
+                    <i class="fa-solid fa-bell secciones__icono"></i>
+                    <span>Mensajes</span>
+                </a>
+
+                <div class="secciones__elemento secciones__elemento-activo">
+                    <i class="fa-solid fa-globe secciones__icono"></i>
+                    <span>Tablero</span>
+                </div>
+
+                <a href="../cuenta/perfil.html" class="secciones__elemento">
+                    <i class="fa-solid fa-user secciones__icono"></i>
+                    <span>Cuenta</span>
+                </a>
+
+            </div>
+
+            <button class="btnAbrirMenu"><i class="fa-solid fa-chevron-right btnAbrirMenu__icono"></i></button>
+        </section>
+
+        <section class="main">
+            <h1 class="main__h1">EMPRESAS</h1>
+
+            <div class="main__superior">
+                <div class="buscar">
+                    <input type="text" placeholder="Escribe para filtrar" class="buscar__input">
+                    <button class="buscar__boton">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Buscar</span>
+                    </button>
+                </div>
+
+                <button class="btnNuevo" onclick="abrirVentanaNuevo()">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Agregar nuevo</span>
+                </button>
+            </div>
+
+            <div class="tabla">
+                <div class="tabla__header tabla__header-proyectos">
+                    <div>Empresa</div>
+                    <div class="tabla__extra">RUC</div>
+                    <div class="tabla__extra">Rubro</div>
+                    <div class="tabla__extra">Correo</div>
+                    <div></div>
+                </div>
+
+                <div class="tabla__contenido">
+
+                    @foreach (var empresa in VentasController.ListadoEmpresas())
+                    {
+                        <div class="tabla__fila tabla__fila-proyectos">
+                            <span>@empresa.RazonSocial</span>
+                            <div class="tabla__extra">@empresa.RucEmpresa</div>
+                            <div class="tabla__extra">@empresa.Rubro</div>
+                            <div class="tabla__extra">@empresa.Correo</div>
+                            <div class="botones">
+                                <div class="botones__boton botones__boton-azul" onclick="abrirVentanaVer()">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>Ver</span>
+                                </div>
+
+                                <a href="tareas.html" class="botones__boton botones__boton-verde">
+                                    <i class="fa-solid fa-arrow-pointer"></i>
+                                    <span>Seleccionar</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    }
+
+
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="mensaje mensaje-nuevo">
+        <form class="mensaje__contenedor" method="post" action="@Url.Action("InsertarEmpresa","Ventas")">
+            <h3 class="mensaje__titulo">AGREGAR NUEVA EMPRESA</h3>
+
+            <div class="mensaje__contenido">
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">RUC</label>
+                    <input class="mensaje__input" type="text" name="RucEmpresa">
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Razón Social</label>
+                    <input class="mensaje__input" type="text" name="RazonSocial">
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Rubro</label>
+                    <div class="mensaje__combobox">
+                        <div class="mensaje__input mensaje__combobox-contenedor">
+                            <input type="text" class="mensaje__combobox-input" placeholder="-- Selecciona --" readonly name="Rubro">
+                            <i class="fa-solid fa-chevron-down mensaje__combobox-flecha"></i>
+                        </div>
+                        <div class="mensaje__combobox-opciones">
+                            <div class="mensaje__combobox-opcion">Desarrollo de Software</div>
+                            <div class="mensaje__combobox-opcion">Minería</div>
+                            <div class="mensaje__combobox-opcion">Alimentos y bebidas</div>
+                            <div class="mensaje__combobox-opcion">Servicios financieros</div>
+                            <div class="mensaje__combobox-opcion">Construcción</div>
+                            <div class="mensaje__combobox-opcion">Manufactura textil y confecciones</div>
+                            <div class="mensaje__combobox-opcion">Turismo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Dirección</label>
+                    <input class="mensaje__input" type="text" name="Direccion">
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Correo</label>
+                    <input class="mensaje__input" type="text" name="Correo">
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Telefono</label>
+                    <input class="mensaje__input" type="text" name="Telefono">
+                </div>
+
+               
+                @*<div class="mensaje__campo mensaje__campo-start">
+            <label for="" class="mensaje__texto">Teléfonos</label>
+            <div>
+
+                <div class="multicampos">
+                    <div class="multicampos__campo">
+                        <div class="mensaje__combobox">
+                            <div class="mensaje__input mensaje__combobox-contenedor" >
+                                <input type="text" class="mensaje__combobox-input buscador" placeholder="Escribe ..." name="telefonos[]">
+                            </div>
+                        </div>
+                        <div class="multicampos__icono" onclick="eliminarCampo(this)">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mensaje__añadir" onclick="añadirCampo(this)">
+                    <div class="linea"></div>
+                    <span><i class="fa-solid fa-plus"></i></span>
+                    <div class="linea"></div>
+                </div>
+            </div>
+        </div>*@
+                
+            </div>
+
+            <div class="mensaje__opciones">
+                <div class="mensaje__boton mensaje__cerrar">
+                    <i class="fa-solid fa-x"></i>
+                    <span>Cancelar</span>
+                </div>
+
+                <button class="mensaje__boton mensaje__aceptar" type="submit" name="enviar">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <span>Guardar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="mensaje mensaje-editar">
+        <div class="mensaje__contenedor">
+            <h3 class="mensaje__titulo">EDITAR EMPRESA</h3>
+
+            <div class="mensaje__contenido">
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">RUC</label>
+                    <input class="mensaje__input mensaje__input-disabled" type="text" value="" disabled>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Razón Social</label>
+                    <input class="mensaje__input" type="text" value="">
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Rubro</label>
+                    <div class="mensaje__combobox">
+                        <div class="mensaje__input mensaje__combobox-contenedor">
+                            <input type="text" class="mensaje__combobox-input" value="Desarrollo de Software" readonly>
+                            <i class="fa-solid fa-chevron-down mensaje__combobox-flecha"></i>
+                        </div>
+                        <div class="mensaje__combobox-opciones">
+                            <div class="mensaje__combobox-opcion">Desarrollo de Software</div>
+                            <div class="mensaje__combobox-opcion">Minería</div>
+                            <div class="mensaje__combobox-opcion">Alimentos y bebidas</div>
+                            <div class="mensaje__combobox-opcion">Servicios financieros</div>
+                            <div class="mensaje__combobox-opcion">Construcción</div>
+                            <div class="mensaje__combobox-opcion">Manufactura textil y confecciones</div>
+                            <div class="mensaje__combobox-opcion">Turismo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Dirección</label>
+                    <input class="mensaje__input" type="text" value="">
+                </div>
+
+                <div class="mensaje__campo">
+                    <label for="" class="mensaje__texto">Correo</label>
+                    <input class="mensaje__input" type="text" value="">
+                </div>
+
+                <div class="mensaje__campo mensaje__campo-start">
+                    <label for="" class="mensaje__texto">Teléfonos</label>
+                    <div>
+
+                        <div class="multicampos">
+                            <div class="multicampos__campo">
+                                <div class="mensaje__combobox">
+                                    <div class="mensaje__input mensaje__combobox-contenedor">
+                                        <input type="text" class="mensaje__combobox-input buscador" placeholder="Escribe ..." name="telefonos[]">
+                                    </div>
+                                </div>
+                                <div class="multicampos__icono" onclick="eliminarCampo(this)">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mensaje__añadir" onclick="añadirCampo(this)">
+                            <div class="linea"></div>
+                            <span><i class="fa-solid fa-plus"></i></span>
+                            <div class="linea"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mensaje__opciones">
+                <div class="mensaje__boton mensaje__cerrar">
+                    <i class="fa-solid fa-x"></i>
+                    <span>Cancelar</span>
+                </div>
+
+                <div class="mensaje__boton mensaje__aceptar">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <span>Guardar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mensaje mensaje-eliminar">
+        <div class="mensaje__contenedor">
+            <h3 class="mensaje__titulo">¿Deseas eliminar esta empresa?</h3>
+
+            <div class="mensaje__opciones">
+                <div class="mensaje__boton mensaje__cerrar">
+                    <i class="fa-solid fa-x"></i>
+                    <span>Cancelar</span>
+                </div>
+
+                <div class="mensaje__boton mensaje__aceptar">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span>Eliminar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

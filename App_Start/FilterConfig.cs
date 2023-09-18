@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using DignitaTask.Filters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace DignitaTask
@@ -8,6 +9,7 @@ namespace DignitaTask
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            
         }
     }
 }
